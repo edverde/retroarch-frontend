@@ -1,0 +1,30 @@
+{
+  "snes": {
+    "Arkanoid (Europe)": {
+      "description": "El clasico juego de romper bloques de Taito. Controla la nave Vaus y destruye todos los bloques de cada nivel usando una pelota rebotante. Incluye power-ups y un jefe final.",
+      "year": "1997",
+      "genre": "Arcade / Rompe bloques",
+      "developer": "Taito"
+    },
+    "Boogerman - A Pick and Flick Adventure (Europe)": {
+      "description": "Un peculiar juego de plataformas protagonizado por Snotty Ragsdale, un millonario excentrico que se transforma en el superheroe Boogerman. Usa ataques poco convencionales para derrotar enemigos en un mundo asqueroso y divertido.",
+      "year": "1995",
+      "genre": "Plataformas",
+      "developer": "Interplay"
+    }
+  },
+  "megadrive": {
+    "Sonic The Hedgehog (USA, Europe)": {
+      "description": "El juego que definio a Sega. Sonic debe atravesar Green Hill Zone y otros niveles a toda velocidad, recogiendo anillos y derrotando al Dr. Robotnik. Revoluciono el genero de plataformas con su velocidad y diseno de niveles.",
+      "year": "1991",
+      "genre": "Plataformas",
+      "developer": "Sonic Team"
+    },
+    "Streets of Rage II (Japan, Europe) (En,Ja)": {
+      "description": "Considerado uno de los mejores beat 'em up de la historia. Elige entre Axel, Blaze, Skate o Max y recorre las calles para derrotar al sindicato criminal de Mr. X. Destaca por su banda sonora compuesta por Yuzo Koshiro.",
+      "year": "1992",
+      "genre": "Beat 'em up",
+      "developer": "Sega / Ancient"
+    }
+  }
+}
