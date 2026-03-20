@@ -8,9 +8,11 @@ con el core y ROM seleccionados.
 import os
 import subprocess
 from config import RETROARCH_EXE, CORES_DIR, SYSTEMS, ASSETS_DIR
+from settings import load_settings
 
 # Config override para hotkeys
 OVERRIDE_CFG = os.path.join(ASSETS_DIR, "retroarch_override.cfg")
+CHEEVOS_CFG = os.path.join(ASSETS_DIR, "cheevos_override.cfg")
 
 
 def launch_game(system_id, rom_path):
@@ -37,9 +39,17 @@ def launch_game(system_id, rom_path):
 
     cmd = [RETROARCH_EXE, "-L", core_path, "--fullscreen", rom_path]
 
-    # Aplicar override de hotkeys si existe (formato --appendconfig=path)
+    # Generar override de cheevos si esta activado
+    _write_cheevos_cfg()
+
+    # Aplicar overrides (hotkeys + cheevos si existe)
+    configs = []
     if os.path.isfile(OVERRIDE_CFG):
-        cmd.append(f"--appendconfig={OVERRIDE_CFG}")
+        configs.append(OVERRIDE_CFG)
+    if os.path.isfile(CHEEVOS_CFG):
+        configs.append(CHEEVOS_CFG)
+    if configs:
+        cmd.append(f"--appendconfig={'|'.join(configs)}")
 
     try:
         proc = subprocess.Popen(cmd)
@@ -47,3 +57,20 @@ def launch_game(system_id, rom_path):
     except Exception as e:
         print(f"ERROR al lanzar RetroArch: {e}")
         return None
+
+
+def _write_cheevos_cfg():
+    """Genera o elimina el override de cheevos segun los ajustes."""
+    settings = load_settings()
+    if settings.get("cheevos_enable") and settings.get("cheevos_username"):
+        lines = [
+            'cheevos_enable = "true"',
+            f'cheevos_username = "{settings["cheevos_username"]}"',
+            f'cheevos_password = "{settings["cheevos_password"]}"',
+        ]
+        with open(CHEEVOS_CFG, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+    else:
+        # Si esta desactivado, eliminar el archivo
+        if os.path.isfile(CHEEVOS_CFG):
+            os.remove(CHEEVOS_CFG)

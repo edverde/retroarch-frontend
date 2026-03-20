@@ -16,6 +16,8 @@ ACTION_LEFT = "left"
 ACTION_RIGHT = "right"
 ACTION_CONFIRM = "confirm"
 ACTION_BACK = "back"
+ACTION_START = "start"
+ACTION_SELECT = "select"
 
 # Umbral para considerar movimiento del stick analogico
 STICK_THRESHOLD = 0.5
@@ -104,6 +106,8 @@ class Controller:
                 pygame.K_SPACE: ACTION_CONFIRM,
                 pygame.K_ESCAPE: ACTION_BACK,
                 pygame.K_BACKSPACE: ACTION_BACK,
+                pygame.K_TAB: ACTION_START,
+                pygame.K_RSHIFT: ACTION_SELECT,
             }
             return mapping.get(event.key)
 
@@ -119,6 +123,10 @@ class Controller:
                 return ACTION_CONFIRM
             elif event.button == 1:
                 return ACTION_BACK
+            elif event.button == 6:
+                return ACTION_START
+            elif event.button == 7:
+                return ACTION_SELECT
 
         # --- D-pad (hat) ---
         if event.type == pygame.JOYHATMOTION:

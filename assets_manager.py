@@ -10,7 +10,7 @@ import urllib.request
 import urllib.parse
 
 from config import (
-    ASSETS_DIR, FONT_URL, FONT_FILENAME,
+    ASSETS_DIR, FONT_URL, FONT_FILENAME, FONT_BOLD_URL, FONT_BOLD_FILENAME,
     THUMBNAIL_BASE_URL, THUMBNAIL_REPOS,
 )
 
@@ -47,6 +47,17 @@ class AssetsManager:
         if os.path.isfile(path):
             return path
         return self.download_font()
+
+    def get_bold_font_path(self):
+        """Devuelve la ruta a la fuente bold, o None."""
+        path = os.path.join(self.fonts_dir, FONT_BOLD_FILENAME)
+        if os.path.isfile(path):
+            return path
+        try:
+            urllib.request.urlretrieve(FONT_BOLD_URL, path)
+            return path
+        except Exception:
+            return None
 
     def _boxart_url(self, system_id, game_name):
         """Construye la URL de la portada en LibRetro Thumbnails."""

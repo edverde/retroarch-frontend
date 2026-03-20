@@ -43,14 +43,17 @@ COLOR_DIMMED = (120, 120, 140)
 COLOR_PANEL_BG = (25, 25, 40)
 COLOR_DESCRIPTION = (180, 180, 200)
 COLOR_SEPARATOR = (50, 50, 70)
+COLOR_CHEEVOS = (255, 215, 0)  # Dorado para RetroAchievements activos
 
 # Assets
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
-# Fuente retro (Google Fonts - Press Start 2P)
-FONT_URL = "https://fonts.gstatic.com/s/pressstart2p/v16/e3t4euO8T-267oIAQAu6jDQyK0nS.ttf"
-FONT_FILENAME = "PressStart2P-Regular.ttf"
+# Fuentes retro
+FONT_URL = "https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6xpg.ttf"
+FONT_FILENAME = "Orbitron-Regular.ttf"
+FONT_BOLD_URL = "https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1ny_Cmxpg.ttf"
+FONT_BOLD_FILENAME = "Orbitron-Bold.ttf"
 
 # LibRetro Thumbnails (portadas)
 THUMBNAIL_BASE_URL = "https://raw.githubusercontent.com/libretro-thumbnails"
@@ -59,5 +62,22 @@ THUMBNAIL_REPOS = {
     "megadrive": "Sega_-_Mega_Drive_-_Genesis",
 }
 
+# Fondos de pantalla
+BACKGROUNDS = {
+    "main": os.path.join(ASSETS_DIR, "backgrounds", "bg_main.jpg"),
+    "snes": os.path.join(ASSETS_DIR, "backgrounds", "bg_snes.jpg"),
+    "megadrive": os.path.join(ASSETS_DIR, "backgrounds", "bg_megadrive.jpg"),
+    "options": os.path.join(ASSETS_DIR, "backgrounds", "bg_options.png"),
+}
+
+# Imagenes de consolas
+CONSOLE_IMAGES = {
+    "snes": os.path.join(ASSETS_DIR, "consoles", "snes.png"),
+    "megadrive": os.path.join(ASSETS_DIR, "consoles", "megadrive.png"),
+}
+
 # Descripciones de juegos
 DESCRIPTIONS_FILE = os.path.join(BASE_DIR, "game_descriptions.json")
+
+# Archivo de ajustes del frontend
+SETTINGS_FILE = os.path.join(BASE_DIR, "settings.json")
